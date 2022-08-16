@@ -34,5 +34,5 @@ def tweet_now(msg):
 while True:
     idx = random.randrange(1,302)  
     tweet_now(df.iloc[idx, 0])
-    time.sleep(7200)
+    time.sleep(3600)
 
