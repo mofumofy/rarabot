@@ -1,4 +1,2 @@
-python-3.7.3
-tweepy==4.9.0
-pandas==1.4.3
+python-3.10.6
 
