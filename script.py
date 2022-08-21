@@ -2,7 +2,7 @@ import tweepy
 import pandas as pd
 import time
 import random
-
+import schedule
 
 url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQJOUMvavjRrVV0uR_aYofU2WEJPDhxy9u8N_weO04hvKmtDbkrip85r2YIHwm6NOdqoCguer4WFy6J/pub?output=csv'
 df = pd.read_csv(url)
@@ -22,22 +22,25 @@ def tweet_now(msg):
             print("Authentication OK")
         except:
             print("Error during authentication")
-        api = tweepy.API(auth)
-        try:
-            api.update_status(msg)
-            print(msg)
+        
+        api.update_status(msg)
+        print(msg)
 
-            print("Tweeted")
-
-        except tweepy.TweepyException:
-            idx = random.randrange(0, len(df.index))
-            tweet_now(df.iloc[idx, 0])
+        print("Tweeted")
     
-    except Exception as e:
-        print(e)
+    except tweepy.TweepyException as e:
+        print (e)
+        idx = random.randrange(0, len(df.index))
+        tweet_now(df.iloc[idx, 0])
 
-while True:
+
+def job():
     idx = random.randrange(0, len(df.index))
     tweet_now(df.iloc[idx, 0])
-    time.sleep(3600)
 
+schedule.every().hour.at(":00").do(job)
+
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
