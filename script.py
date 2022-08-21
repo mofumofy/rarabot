@@ -23,10 +23,15 @@ def tweet_now(msg):
         except:
             print("Error during authentication")
         api = tweepy.API(auth)
-        api.update_status(msg)
-        print(msg)
+        try:
+            api.update_status(msg)
+            print(msg)
 
-        print("Tweeted")
+            print("Tweeted")
+
+        except tweepy.TweepyException:
+            idx = random.randrange(0, len(df.index))
+            tweet_now(df.iloc[idx, 0])
     
     except Exception as e:
         print(e)
