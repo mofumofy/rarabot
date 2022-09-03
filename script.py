@@ -9,7 +9,7 @@ df = pd.read_csv(url)
 
 
 def tweet_now(msg):
-    msg = msg[0:279]
+    msg = msg[0:280]
     try:
 
         auth = tweepy.OAuthHandler("Sd0LCUcTj4SojlAHUq27dssp2", 
