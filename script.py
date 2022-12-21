@@ -14,8 +14,8 @@ def tweet_now(msg):
 
         auth = tweepy.OAuthHandler("Sd0LCUcTj4SojlAHUq27dssp2", 
             "yPx5yxZpENQOdTT5yjahJkSJofiClocgQRP6sl2errh7f4uBSq")
-        auth.set_access_token("1174986605007798272-igLhTg6lRljkUf5ZCTEW5wK31zq4yg", 
-            "B5LzdCD4JGxn1oGi2K26zVqLf1Ja7ZMKn7Djr6qqcXc0d")
+        auth.set_access_token("1174986605007798272-PyyaTe5BvMGAzd59KHstXUrSKcPQuW", 
+            "2CEdDbdEU4PKsM0SjuI38tCmowFXyf5pL6uIvZMboRyt8")
         api = tweepy.API(auth)
         try:
             api.verify_credentials()
