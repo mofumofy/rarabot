@@ -37,7 +37,9 @@ def job():
     idx = random.randrange(0, len(df.index))
     tweet_now(df.iloc[idx, 0])
 
-schedule.every(3).minutes.do(job)
+schedule.every().day.at("12:00").do(job)
+schedule.every().day.at("00:00").do(job)
 
 while True:
     schedule.run_pending()
+    time.sleep(1)
